@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -70,18 +70,18 @@ namespace UCCScriptRunner
             {
                 switch (_P[0])
                 {
-                    case char c when _P.StartsWith("First"):
+                    case char _ when _P.StartsWith("First"):
                         _P = string.Join("", _P[5..].SkipWhile(c => c == ' '));
                         First = string.Join("", _P.TakeWhile(c => c != ' '));
                         _P = string.Join("", _P[First.Length..].SkipWhile(c => c == ' '));
                         break;
-                    case char c when _P.StartsWith("Global"):
+                    case char _ when _P.StartsWith("Global"):
                         _P = string.Join("", _P[6..].SkipWhile(c => c == ' '));
                         string vName = string.Join("", _P.TakeWhile(c => c != ' '));
                         GlobalVar.Add(vName, 0);
                         _P = string.Join("", _P[vName.Length..].SkipWhile(c => c == ' '));
                         break;
-                    case char c when c == '$':
+                    case '$':
                         _P = _P[1..];
                         Group = [.. Group.Append(new())];
                         Group[^1].Name = string.Join("", _P.TakeWhile(c => c != ' '));
