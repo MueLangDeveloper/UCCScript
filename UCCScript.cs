@@ -46,7 +46,7 @@ namespace UCCScriptRunner
 
         private enum Location
         {
-            Pattern = 1,
+            Pattern,
             Result,
         }
         private struct JumpInfo(Location _location, int _index)
